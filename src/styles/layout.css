@@ -1,0 +1,107 @@
+/* Preserve the small-screen layout. Above a full-HD workspace, type and spacing
+   grow gently, while the main scenes use the available width AND height.
+   rem keeps typography tied to the visitor's default font size. */
+html {
+  font-size: clamp(1rem, calc(0.5rem + min(0.416666667vw, 0.740740741svh)), 2rem);
+}
+
+:root {
+  --scene-unit: clamp(1rem, min(0.833333333vw, 1.481481481svh), 2rem);
+}
+
+/* Reading measures stay bounded even when the surrounding composition expands. */
+.about-opening-copy,
+.story-description {
+  max-inline-size: 52ch;
+}
+.about-timeline p {
+  max-inline-size: 40ch;
+}
+.cinema-introduction p {
+  max-inline-size: 85ch;
+  margin-inline: auto;
+}
+
+@media (min-width: 1920px) and (min-height: 900px) {
+  .page-shell {
+    max-width: calc(90 * var(--scene-unit));
+  }
+  .site-header {
+    height: calc(5.5 * var(--scene-unit));
+  }
+  .cinema-hero {
+    padding-top: calc(7.1875 * var(--scene-unit));
+  }
+  .cinema-stage {
+    max-width: calc(95.625 * var(--scene-unit));
+  }
+  .cinema-atmosphere > div {
+    width: calc(71.875 * var(--scene-unit));
+    height: calc(71.875 * var(--scene-unit));
+    top: calc(-27.5 * var(--scene-unit));
+  }
+  .receiver-glass {
+    height: calc(31.25 * var(--scene-unit));
+  }
+  .receiver-wordmark {
+    font-size: calc(18.125 * var(--scene-unit));
+  }
+  .receiver-subtitles {
+    font-size: calc(1.1875 * var(--scene-unit));
+  }
+  .receiver-autograph {
+    font-size: calc(2.8125 * var(--scene-unit));
+  }
+  .cinema-introduction {
+    margin-top: calc(2.125 * var(--scene-unit));
+    margin-bottom: calc(2.25 * var(--scene-unit));
+  }
+  .cinema-introduction h1 {
+    font-size: calc(3.25 * var(--scene-unit));
+  }
+  .cinema-introduction p {
+    font-size: calc(0.6875 * var(--scene-unit));
+  }
+  .cinema-introduction .hero-actions {
+    margin-top: calc(1.3125 * var(--scene-unit));
+  }
+  .cinema-introduction .hero-actions [data-slot='button'] {
+    height: calc(2.8125 * var(--scene-unit));
+    min-width: calc(9.875 * var(--scene-unit));
+    font-size: calc(0.75 * var(--scene-unit));
+  }
+  .cinema-hero .hero-foot {
+    min-height: calc(4 * var(--scene-unit));
+  }
+
+  .about-introduction {
+    min-height: calc(47.5 * var(--scene-unit));
+  }
+  .about-portrait {
+    height: calc(43.75 * var(--scene-unit));
+  }
+  .about-portrait > img {
+    height: calc(42.8125 * var(--scene-unit));
+  }
+  .live-page-screen,
+  .live-information {
+    max-width: calc(65.625 * var(--scene-unit));
+  }
+
+  .bio-shell {
+    max-width: calc(38.75 * var(--scene-unit));
+  }
+  .bio-avatar-wrap,
+  .bio-avatar {
+    width: calc(9.375 * var(--scene-unit));
+  }
+  .bio-avatar {
+    height: calc(9.375 * var(--scene-unit));
+  }
+
+  .artwork-dialog {
+    width: min(calc(56.25 * var(--scene-unit)), 94vw) !important;
+    max-width: calc(56.25 * var(--scene-unit)) !important;
+    height: min(calc(52.5 * var(--scene-unit)), calc(100dvh - 2rem));
+  }
+}
